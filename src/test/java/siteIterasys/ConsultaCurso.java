@@ -1,17 +1,41 @@
 package siteIterasys;
 
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public class ConsultaCurso {
+    String url;
+    WebDriver driver;
+
+    @Before
+    public void Iniciar()
+    {
+        url = "https://iterasys.com.br/";
+        System.setProperty("webdriver.chrome.driver","drivers/Chrome/chromedriver.exe");
+        driver = new ChromeDriver();
+    }
+
+    @After
+    public void Finalizar()
+    {
+        driver.quit();
+    }
+
     @Dado("^que visito o site da Iterasys$")
     public void que_visito_o_site_da_Iterasys(){
+        driver.get(url);
     }
 
     @Quando("^preencho a consulta com \"([^\"]*)\" e clico na Lupa$")
-    public void preencho_a_consulta_com_e_clico_na_Lupa(String arg1){
-
+    public void preencho_a_consulta_com_e_clico_na_Lupa(String nomeCurso){
+        driver.findElement(By.id("searchtext")).sendKeys(nomeCurso);
+        driver.findElement(By.id("btn_form_search")).click();
     }
 
     @Entao("^visualizo a oferta do curso \"([^\"]*)\"$")
