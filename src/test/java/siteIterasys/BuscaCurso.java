@@ -48,7 +48,8 @@ public class BuscaCurso {
     }
 
     @Entao("^exibe uma lista com curso \"([^\"]*)\"$")
-    public void exibe_uma_lista_com_curso(String arg1) {
+    public void exibe_uma_lista_com_curso(String termo) {
+        assertEquals("Cursos › \""+termo+"\"",driver.findElement(By.cssSelector("div.col-md-6")).getText());
         assertEquals("MATRICULE-SE  ",driver.findElement(By.cssSelector("span.comprar")).getText());
     }
 
