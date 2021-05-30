@@ -13,15 +13,16 @@ public class ConsultaCurso {
     String url;
     WebDriver driver;
 
-    @Before
+   // @Before
     public void Iniciar()
     {
+        System.out.println("ConsultaCurso.java");
         url = "https://iterasys.com.br/";
         System.setProperty("webdriver.chrome.driver","drivers/Chrome/chromedriver.exe");
         driver = new ChromeDriver();
     }
 
-    @After
+    //@After
     public void Finalizar()
     {
         driver.quit();
