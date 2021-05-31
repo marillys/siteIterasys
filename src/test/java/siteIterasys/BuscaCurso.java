@@ -66,6 +66,7 @@ public class BuscaCurso {
 
     @Entao("^exibe mensagem de curso nao encontrado$")
     public void exibe_mensagem_de_curso_nao_encontrado(){
-
+        assertEquals("Desculpe não encontramos o curso que procura =(   Conheça nossos Cursos",
+                driver.findElement(By.cssSelector("div.alert.alert-warning")).getText());
     }
 }

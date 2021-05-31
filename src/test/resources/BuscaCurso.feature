@@ -10,5 +10,5 @@
 
     Cenario: Busca por TestLink
       Dado que acesso o site da Iterasys
-      Quando consulto pelo curso "qwert"
+      Quando consulto pelo curso "TestLink"
       Entao exibe mensagem de curso nao encontrado
