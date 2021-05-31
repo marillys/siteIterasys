@@ -55,11 +55,17 @@ public class BuscaCurso {
 
     @Quando("^clico em Matricule-se$")
     public void clico_em_Matricule_se(){
-
+        driver.findElement(By.cssSelector("span.comprar")).click();
     }
 
     @Entao("^exibe o titulo \"([^\"]*)\" e o valor \"([^\"]*)\"$")
-    public void exibe_o_titulo_e_o_valor(String arg1, String arg2){
+    public void exibe_o_titulo_e_o_valor(String titulo, String valor){
+        assertEquals(titulo,driver.findElement(By.cssSelector("span.item-title")).getText());
+        assertEquals(valor,driver.findElement(By.cssSelector("span.new-price")).getText());
+    }
+
+    @Entao("^exibe mensagem de curso nao encontrado$")
+    public void exibe_mensagem_de_curso_nao_encontrado(){
 
     }
 }
