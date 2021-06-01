@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.FindBy;
+import template.AmbientesParametros;
 
 import java.util.concurrent.TimeUnit;
 
@@ -22,8 +22,13 @@ public class BuscaCurso {
     @Before
     public void iniciar()
     {
+        //Instanciar a classe que le a classe de properties
+        new AmbientesParametros();
+
         System.out.println("BuscaCurso.java");
-        url = "https://iterasys.com.br/";
+        url = AmbientesParametros.URL_APLICACAO;
+                //"https://iterasys.com.br/";
+
         System.setProperty("webdriver.chrome.driver","drivers/Chrome/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(60000, TimeUnit.MILLISECONDS);
