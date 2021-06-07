@@ -12,8 +12,18 @@ public class AmbientesParametros {
     public static String REPORT_NAME;
     public static String REPORT_PATH;
     public static String IMAGE_PATH;
+    private static AmbientesParametros ambientesParametros;
 
     private Properties properties;
+
+    public static AmbientesParametros getInstance()
+    {
+        if(ambientesParametros == null)
+        {
+            ambientesParametros = new AmbientesParametros();
+        }
+        return ambientesParametros;
+    }
 
     public AmbientesParametros(){
         //ler arquivo
