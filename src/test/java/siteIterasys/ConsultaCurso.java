@@ -1,10 +1,8 @@
 package siteIterasys;
 
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
-import cucumber.api.java.pt.Dado;
-import cucumber.api.java.pt.Entao;
-import cucumber.api.java.pt.Quando;
+import io.cucumber.java.pt.Dado;
+import io.cucumber.java.pt.Entao;
+import io.cucumber.java.pt.Quando;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
