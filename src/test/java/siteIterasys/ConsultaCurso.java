@@ -1,5 +1,7 @@
 package siteIterasys;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
@@ -11,7 +13,7 @@ public class ConsultaCurso {
     String url;
     WebDriver driver;
 
-   // @Before
+    @Before
     public void Iniciar()
     {
         System.out.println("ConsultaCurso.java");
@@ -20,7 +22,7 @@ public class ConsultaCurso {
         driver = new ChromeDriver();
     }
 
-    //@After
+    @After
     public void Finalizar()
     {
         driver.quit();
