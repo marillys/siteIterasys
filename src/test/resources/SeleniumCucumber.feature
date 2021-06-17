@@ -10,4 +10,4 @@
       Exemplos:
       | produto      | modelo       | preco        |
       | "geladeira"  | "geladeira"  | "R$ 2.149,99"|
-      | "Torradeira" | "Torradeira" | "R$ 99,90"   |
+     # | "Torradeira" | "Torradeira" | "R$ 99,90"   |

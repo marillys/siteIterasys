@@ -10,6 +10,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import page.HomePage;
+import page.ListPage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -21,10 +27,18 @@ public class SeleniumCucumber {
     public void iniciar()
     {
         url = "https://www.submarino.com.br/";
-        System.setProperty("webdriver.chrome.driver", "drivers/Chrome/chromedriver.exe");
+        /*System.setProperty("webdriver.chrome.driver", "drivers/Chrome/chromedriver.exe");
 
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(2000, TimeUnit.MILLISECONDS);
+        driver.manage().timeouts().implicitlyWait(2000, TimeUnit.MILLISECONDS);*/
+
+        System.setProperty("webdriver.gecko.driver", "drivers/Firefox/geckodriver.exe");
+
+        FirefoxOptions fo = new FirefoxOptions();
+
+        fo.setCapability("marionette",true);
+
+        driver = new FirefoxDriver(fo);
     }
 
     @After
@@ -40,12 +54,24 @@ public class SeleniumCucumber {
 
     @Quando("busco por {string}")
     public void busco_por(String produto) {
-        driver.findElement(By.id("h_search-input")).sendKeys(produto + Keys.ENTER);
+        //Cucumber + Cucumber
+        //driver.findElement(By.id("h_search-input")).sendKeys(produto + Keys.ENTER);
+
+        //Cucumber+Selenium +PageObjects
+        HomePage homePage = new HomePage(driver);
+
+        homePage.limparCaixaBusca();
+        homePage.buscaDandoENTER(produto);
     }
 
     @Entao("exibe a lista do {string}")
     public void exibe_a_lista_do(String produto) {
-        Assert.assertEquals("geladeira",driver.findElement(By.cssSelector("img.src__Image-xr9q25-0.lkEXOf")).getText());
+
+        //Assert.assertEquals("geladeira", driver.findElement(By.cssSelector("img.src__Image-xr9q25-0.lkEXOf")).getText());
+
+        ListPage listPage = new ListPage(driver);
+        Assert.assertEquals("geladeira",listPage.obterResultadoPagina());
+
     }
 
     @Entao("ao clicar no primeiro produto da lista")

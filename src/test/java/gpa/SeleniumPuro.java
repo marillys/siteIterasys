@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class SeleniumPuro {
     String url;
@@ -20,7 +21,11 @@ public class SeleniumPuro {
         url = "https://www.submarino.com.br/";
         System.setProperty("webdriver.chrome.driver", "drivers/Chrome/chromedriver.exe");
 
-        driver = new ChromeDriver();
+        //Janela anonima
+        ChromeOptions co = new ChromeOptions();
+        co.addArguments("--incognito");
+
+        driver = new ChromeDriver(co);
     }
 
     @After
